@@ -44,7 +44,7 @@ namespace ClienteTresEnRaya.Vistas
             }
         }
 
-        private void BtnCelda_Click(object sender, RoutedEventArgs e)
+        private async void BtnCelda_Click(object sender, RoutedEventArgs e)
         {
             if (!turnoJugador) return;
 
@@ -71,8 +71,13 @@ namespace ClienteTresEnRaya.Vistas
 
             turnoJugador = false;
             StatusTxt.Text = "Turno máquina (O)";
+
+            // Esperar que UI refresque
+            await Task.Delay(300);
+
             TurnoMaquina();
         }
+
 
         private void TurnoMaquina()
         {
@@ -106,17 +111,34 @@ namespace ClienteTresEnRaya.Vistas
 
         private bool ChequeaVictoria(string jugador)
         {
-            string[] b = celdas.Select(c => (string)c.Content).ToArray();
-            int[][] lines = new int[][]
+            int[][] combinacionesGanadoras = new int[][]
             {
-                new[] {0,1,2}, new[] {3,4,5}, new[] {6,7,8},
-                new[] {0,3,6}, new[] {1,4,7}, new[] {2,5,8},
-                new[] {0,4,8}, new[] {2,4,6}
+                new int[] { 0, 1, 2 },
+                new int[] { 3, 4, 5 },
+                new int[] { 6, 7, 8 },
+                new int[] { 0, 3, 6 },
+                new int[] { 1, 4, 7 },
+                new int[] { 2, 5, 8 },
+                new int[] { 0, 4, 8 },
+                new int[] { 2, 4, 6 }
             };
 
-            foreach (var line in lines)
-                if (b[line[0]] == jugador && b[line[1]] == jugador && b[line[2]] == jugador)
+            foreach (var c in combinacionesGanadoras)
+            {
+                var a = celdas[c[0]].Content as string;
+                var b = celdas[c[1]].Content as string;
+                var c2 = celdas[c[2]].Content as string;
+
+                if (!string.IsNullOrWhiteSpace(a) &&
+                    !string.IsNullOrWhiteSpace(b) &&
+                    !string.IsNullOrWhiteSpace(c2) &&
+                    a == jugador &&
+                    b == jugador &&
+                    c2 == jugador)
+                {
                     return true;
+                }
+            }
             return false;
         }
 

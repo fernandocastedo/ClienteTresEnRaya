@@ -5,16 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClienteTresEnRaya.Vistas"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <TextBox x:Name="HostBox" Width="150" Margin="5"/>
-                <TextBox x:Name="PortBox" Width="80" Margin="5" Text="12345"/>
-                <Button x:Name="ConnectBtn" Content="Conectar" Width="100" Margin="5" Click="ConnectBtn_Click"/>
+             Height="500" Width="850">
+    <Grid Background="#1A1A2E">
+        <DockPanel Margin="20">
+            <!-- Sección de conexión -->
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,0,0,20">
+                <TextBox x:Name="HostBox" Width="200" Margin="5" VerticalAlignment="Center" Height="30"
+                         Background="#2A2A4A" Foreground="White" BorderBrush="#FF6B6B" BorderThickness="2" 
+                         FontSize="14" />
+                <TextBox x:Name="PortBox" Width="80" Margin="5" VerticalAlignment="Center" Height="30"
+                         Background="#2A2A4A" Foreground="White" BorderBrush="#FF6B6B" BorderThickness="2" 
+                         FontSize="14" Text="12345"/>
+                <Button x:Name="ConnectBtn" Content="Conectar" Width="100" Height="30" Margin="5" 
+                        Background="#FF6B6B" Foreground="White" FontWeight="Bold" FontSize="14" Click="ConnectBtn_Click"/>
             </StackPanel>
-            <UniformGrid x:Name="BoardGrid" Rows="3" Columns="3" Margin="10" />
-            <TextBlock x:Name="StatusTxt" HorizontalAlignment="Center" Margin="10" FontWeight="Bold"/>
+
+            <!-- Tablero -->
+            <UniformGrid x:Name="BoardGrid" Rows="3" Columns="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Width="360" Height="360" Margin="0,0,0,20"/>
+
+            <!-- Estado -->
+            <TextBlock x:Name="StatusTxt" Foreground="White" FontSize="20" FontWeight="Bold" 
+                       HorizontalAlignment="Center" TextAlignment="Center"/>
         </DockPanel>
     </Grid>
 </UserControl>

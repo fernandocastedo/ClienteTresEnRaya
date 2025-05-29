@@ -37,14 +37,26 @@ namespace ClienteTresEnRaya.Vistas
 
         private void InicializarTablero()
         {
+            BoardGrid.Children.Clear();
+            celdas = new Button[9];
+
             for (int i = 0; i < 9; i++)
             {
-                Button btn = new Button { Tag = i, FontSize = 32, Margin = new Thickness(5) };
+                var btn = new Button
+                {
+                    Tag = i,
+                    FontSize = 48,
+                    Margin = new Thickness(5),
+                    Background = new SolidColorBrush(Color.FromRgb(255, 107, 107)),
+                    Foreground = Brushes.White,
+                    FontWeight = FontWeights.Bold
+                };
                 btn.Click += BtnCelda_Click;
                 BoardGrid.Children.Add(btn);
                 celdas[i] = btn;
             }
         }
+
 
         private void BtnCelda_Click(object sender, RoutedEventArgs e)
         {
