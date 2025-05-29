@@ -1,0 +1,30 @@
+﻿<Window x:Class="ClienteTresEnRaya.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClienteTresEnRaya"
+        mc:Ignorable="d"
+        Title="Tres en Raya" Height="450" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Conexión -->
+        <DockPanel Margin="10">
+            <TextBox x:Name="HostBox" Width="150" Text="127.0.0.1"/>
+            <TextBox x:Name="PortBox" Width="70" Margin="5,0,0,0" Text="12345"/>
+            <Button  x:Name="ConnectBtn" Content="Conectar" Click="ConnectBtn_Click" Margin="5,0,0,0"/>
+        </DockPanel>
+
+        <!-- Tablero -->
+        <UniformGrid x:Name="BoardGrid" Grid.Row="1" Rows="3" Columns="3" Margin="10"/>
+
+        <!-- Estado -->
+        <TextBlock x:Name="StatusTxt" Grid.Row="2" FontSize="16"
+                   HorizontalAlignment="Center" Margin="0,10"/>
+    </Grid>
+</Window>
