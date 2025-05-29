@@ -6,25 +6,48 @@
         xmlns:local="clr-namespace:ClienteTresEnRaya"
         mc:Ignorable="d"
         Title="Tres en Raya" Height="450" Width="450">
-    <Grid>
+    <Window.Resources>
+        <!-- Estilos -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Background" Value="#FF6B6B"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#1A1A2E">
+        <!-- Contenedor Principal -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Conexión -->
-        <DockPanel Margin="10">
-            <TextBox x:Name="HostBox" Width="150" Text="127.0.0.1"/>
-            <TextBox x:Name="PortBox" Width="70" Margin="5,0,0,0" Text="12345"/>
-            <Button  x:Name="ConnectBtn" Content="Conectar" Click="ConnectBtn_Click" Margin="5,0,0,0"/>
+        <!-- Sección de Conexión -->
+        <DockPanel Grid.Row="0" Margin="10">
+            <TextBox x:Name="HostBox" Width="200" Margin="10"  VerticalAlignment="Center"/>
+            <TextBox x:Name="PortBox" Width="100" Margin="10"  VerticalAlignment="Center" Text="12345"/>
+            <Button x:Name="ConnectBtn" Content="Conectar" Width="70" Click="ConnectBtn_Click" VerticalAlignment="Center" FontSize="12"/>
         </DockPanel>
 
-        <!-- Tablero -->
-        <UniformGrid x:Name="BoardGrid" Grid.Row="1" Rows="3" Columns="3" Margin="10"/>
+        <!-- Tablero de Juego -->
+        <UniformGrid x:Name="BoardGrid" Grid.Row="1" Rows="3" Columns="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!-- Aquí se generarán los botones de 3x3 -->
+        </UniformGrid>
 
-        <!-- Estado -->
-        <TextBlock x:Name="StatusTxt" Grid.Row="2" FontSize="16"
-                   HorizontalAlignment="Center" Margin="0,10"/>
+        <!-- Texto de Estado -->
+        <TextBlock x:Name="StatusTxt" Grid.Row="2" Foreground="White" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>
