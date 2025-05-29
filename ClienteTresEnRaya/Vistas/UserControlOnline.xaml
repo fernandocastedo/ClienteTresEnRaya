@@ -18,6 +18,9 @@
                          FontSize="14" Text="12345"/>
                 <Button x:Name="ConnectBtn" Content="Conectar" Width="100" Height="30" Margin="5" 
                         Background="#FF6B6B" Foreground="White" FontWeight="Bold" FontSize="14" Click="ConnectBtn_Click"/>
+                <Button x:Name="BtnReiniciar" Content="Reiniciar partida" Width="150" Height="30" Margin="10"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="BtnReiniciar_Click"
+                Visibility="Collapsed"/>
             </StackPanel>
 
             <!-- Tablero -->

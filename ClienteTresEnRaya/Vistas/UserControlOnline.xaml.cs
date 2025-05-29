@@ -56,7 +56,29 @@ namespace ClienteTresEnRaya.Vistas
                 celdas[i] = btn;
             }
         }
+        private void BtnReiniciar_Click(object sender, RoutedEventArgs e)
+        {
+            // Limpia el tablero visualmente
+            foreach (var btn in celdas)
+            {
+                btn.Content = "";
+                btn.IsEnabled = true;
+            }
 
+            BtnReiniciar.Visibility = Visibility.Collapsed;
+            StatusTxt.Text = "Esperando reinicio del servidor...";
+
+            // Envía mensaje al servidor indicando que quiere reiniciar partida
+            try
+            {
+                writer?.WriteLine("REINICIAR");
+                writer?.Flush();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al solicitar reinicio: " + ex.Message);
+            }
+        }
 
         private void BtnCelda_Click(object sender, RoutedEventArgs e)
         {
